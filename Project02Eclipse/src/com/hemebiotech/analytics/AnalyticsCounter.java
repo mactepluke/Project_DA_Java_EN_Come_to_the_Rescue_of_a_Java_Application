@@ -8,6 +8,7 @@ public class AnalyticsCounter {
 
 		Analyze newAnalyse = new Analyze(SOURCE_FILE_PATH, TARGET_FILE_PATH);
 		
+		// Uses the Analyze class to perform the reading, sorting and writing in a new file of the symptoms in the above specified source file
 		try	{
 			newAnalyse.runAnalyze();
 		}

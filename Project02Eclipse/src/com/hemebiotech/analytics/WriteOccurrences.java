@@ -3,34 +3,33 @@ package com.hemebiotech.analytics;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class WriteOccurrences {
 	String targetFilePath;
-	HashMap<String, Integer> symptoms;
+	ArrayList<String> elements;
 
-	public WriteOccurrences(String targetFilePath, HashMap<String, Integer> symptoms) {
+	public WriteOccurrences(String targetFilePath, ArrayList<String> elements) {
 		this.targetFilePath = targetFilePath;
-		this.symptoms = symptoms;
+		this.elements = elements;
 	}
 
+	// Writes the String elements from the ArrayList one line at a time in the specified file
 	public void runWriteOccurrences() throws IOException {
 
 		try {
 			FileWriter writer = new FileWriter("result.out");
 			PrintWriter printWriter = new PrintWriter(writer);
 
-			for (String symptom : symptoms.keySet()) {
-				printWriter.println(symptom + ": " + symptoms.get(symptom));
+			for (String element : elements) {
+				printWriter.println(element);
 			}
 
 			printWriter.close();
 		}
 
 		catch (IOException e) {
-
+			System.out.println("Cannot write.");
 		}
-
 	}
-
 }

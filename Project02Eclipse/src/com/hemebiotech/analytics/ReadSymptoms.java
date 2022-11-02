@@ -6,32 +6,37 @@ import java.io.BufferedReader;
 import java.util.HashMap;
 
 public class ReadSymptoms {
-	private String file;
+	private String filePath;
 
-	public ReadSymptoms(String file) {
-		this.file = file;
+	public ReadSymptoms(String filePath) {
+		this.filePath = filePath;
 	}
 
+	// Reads the file and returns a HashMap with the symptom names as keys and their occurrences as values
 	public HashMap<String, Integer> runReadSymptoms() throws IOException {
-		String line = null;
+		String symptom = null;
 		HashMap<String, Integer> symptoms = new HashMap<>();
+		int count = 0;
 
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(file));
+			BufferedReader reader = new BufferedReader(new FileReader(filePath));
 
 			do {
-				line = reader.readLine();
+				symptom = reader.readLine();
 
-				if (symptoms.containsKey(line)) {
-					symptoms.put(line, symptoms.get(line) + 1);
+				if (symptoms.containsKey(symptom)) {
+					symptoms.put(symptom, symptoms.get(symptom) + 1);
+					count++;
 				} else {
-					if (line != null)	{
-						symptoms.put(line, 1);
+					if (symptom != null)	{
+						symptoms.put(symptom, 1);
+						count++;
 					}
 				}
-			} while (line != null);
+			} while (symptom != null);
 			
 			reader.close();
+			System.out.println("Successfully read " + count + " symptoms.");
 		}
 
 		catch (IOException e) {
