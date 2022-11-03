@@ -29,7 +29,9 @@ public class WriteOccurrences {
 		}
 
 		catch (IOException e) {
-			System.out.println("Cannot write.");
+			System.out.println(e);
+			System.out.println("Analyze failed.");
+			System.exit(-1);
 		}
 	}
 }

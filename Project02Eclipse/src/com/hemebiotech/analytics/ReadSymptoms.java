@@ -40,8 +40,11 @@ public class ReadSymptoms {
 		}
 
 		catch (IOException e) {
-			System.out.println("Cannot read file.");
+			System.out.println(e);
+			System.out.println("Analyze failed.");
+			System.exit(-1);
 		}
+
 		return symptoms;
 	}
 }
