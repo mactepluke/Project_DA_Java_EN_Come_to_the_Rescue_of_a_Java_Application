@@ -5,14 +5,28 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.util.HashMap;
 
+		/**
+		 * This class is used to read the source file and put its elements into a HashMap.
+		 * 
+		 * @author lucmetz
+		 *
+		 */
 public class ReadSymptoms {
 	private String filePath;
 
+		/**
+		 * @param filePath the path and name of the source file to read
+		 */
 	public ReadSymptoms(String filePath) {
 		this.filePath = filePath;
 	}
 
-	// Reads the file and returns a HashMap with the symptom names as keys and their occurrences as values
+		/** Reads the file and returns a HashMap with its lines text content as keys
+		 *  and the occurrences of redundant lines in the file as corresponding values.
+		 * 
+		 * @return a HashMap of the line elements and their occurrences in the file
+		 * @throws IOException If an I/O error occurs.
+		 */
 	public HashMap<String, Integer> runReadSymptoms() throws IOException {
 		String symptom = null;
 		HashMap<String, Integer> symptoms = new HashMap<>();

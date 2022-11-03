@@ -4,16 +4,27 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+		/** 
+		 * This class is used to alphabetically sort elements that are being analyzed.
+		 * 
+		 * @author lucmetz
+		 *
+		 */
 public class SortOccurrences {
-	HashMap<String, Integer> mapElements;
+	private HashMap<String, Integer> mapElements;
 
+		/** 
+		 * @param mapElements an HashMap of the elements that must be sorted.
+		 */
 	public SortOccurrences(HashMap<String, Integer> mapElements) {
 		this.mapElements = mapElements;
 	}
 
-	//Returns a sorted ArrayList of Strings created from the HashMap that contains the symptom names and their occurrences
-	//WARNING: the mapping is lost at this level as the returned ArrayList contains only Stings. It is generated for writing/display purposes,
-	//further operations on the symptoms should be performed using the unsorted HashMap only if needed so the data structure is not broken.
+		/** Alphabetically sorts the elements of the HashMap given as the class parameter
+		 * after concatenating its keys and values as Strings and putting them in a new ArrayList.
+		 * 
+		 * @return	sortedElements a sorted ArrayList of Strings that concatenate the keys and the values of the HashMap contents
+		 */
 	public ArrayList<String> runSortOccurrences()	{
 		ArrayList<String> sortedElements = new ArrayList<String>();
 		
