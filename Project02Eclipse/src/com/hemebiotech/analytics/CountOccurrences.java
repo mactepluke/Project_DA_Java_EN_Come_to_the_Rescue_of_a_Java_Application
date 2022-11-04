@@ -1,39 +1,36 @@
 package com.hemebiotech.analytics;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
-		/** 
-		 * This class is used to alphabetically sort elements that are being analyzed.
-		 * 
-		 * @author lucmetz
-		 *
-		 */
-public class SortOccurrences {
-	private HashMap<String, Integer> mapElements;
+/**
+ * This class is used to alphabetically sort elements that are being analyzed.
+ * 
+ * @author lucmetz
+ *
+ */
+public class CountOccurrences implements IsACountOccurrences	{
 
-		/** 
-		 * @param mapElements an HashMap of the elements that must be sorted.
-		 */
-	public SortOccurrences(HashMap<String, Integer> mapElements) {
-		this.mapElements = mapElements;
-	}
+	/** 
+	 * @param symptoms an HashMap of the elements that must be sorted
+	 * @return sortedElements a TreeMap of the elements.
+	 * 
+	 * See {@link IsACountOccurrences public Map<String, Integer> runCountOccurrences(ArrayList<String> symptoms)}
+	 */
+	public Map<String, Integer> runCountOccurrences(ArrayList<String> symptoms) {
+		Map<String, Integer> sortedElements = new TreeMap<String, Integer>();
 
-		/** Alphabetically sorts the elements of the HashMap given as the class parameter
-		 * after concatenating its keys and values as Strings and putting them in a new ArrayList.
-		 * 
-		 * @return	sortedElements a sorted ArrayList of Strings that concatenate the keys and the values of the HashMap contents
-		 */
-	public ArrayList<String> runSortOccurrences()	{
-		ArrayList<String> sortedElements = new ArrayList<String>();
-		
-		for (String mapElement : mapElements.keySet()) {
-			sortedElements.add(mapElement + ": " + mapElements.get(mapElement));
+		System.out.println("Counting symptoms occurrences...");
+
+		for (String symptom : symptoms) {
+
+			if (sortedElements.containsKey(symptom)) {
+				sortedElements.put(symptom, sortedElements.get(symptom) + 1);
+			} else
+				sortedElements.put(symptom, 1);
 		}
-		
-		Collections.sort(sortedElements);
-		
+
 		return sortedElements;
 	}
 }
