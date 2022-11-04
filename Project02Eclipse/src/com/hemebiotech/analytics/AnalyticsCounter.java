@@ -18,20 +18,18 @@ public class AnalyticsCounter {
 		 * @param args no use is made of this class arguments in the current implementation
 		 * @throws Exception
 		 */
-	public static void main(String args[]) throws Exception {
+	public static void main(String args[])	{
 
 		Analyze newAnalyse = new Analyze(SOURCE_FILE_PATH, TARGET_FILE_PATH);
 		
 		try	{
 			newAnalyse.runAnalyze();
+			System.out.println("Analyze done.");
 		}
 	
 		catch	(Exception e)	{
-			System.out.println("Analyze failed.");
+			e.printStackTrace();
 		}
 		
-		finally	{
-			System.out.println("Analyze successful.");
-		}
 	}
 }

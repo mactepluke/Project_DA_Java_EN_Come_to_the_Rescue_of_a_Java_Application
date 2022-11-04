@@ -3,7 +3,9 @@ package com.hemebiotech.analytics;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.Map.Entry;
+
 
 		/**
 		 * This class is used to write the analyze output in the corresponding file.
@@ -11,42 +13,39 @@ import java.util.ArrayList;
 		 * @author lucmetz
 		 *
 		 */
-public class WriteOccurrences {
+public class WriteOccurrences implements IsAWriteOccurrences	{
 	private String targetFilePath;
-	private ArrayList<String> elements;
 
 		/**
 		 * 
 		 * @param targetFilePath the path and name to the output file in which the elements will be written
-		 * @param elements the ArrayList of String elements that will be written in the output file
 		 */
-	public WriteOccurrences(String targetFilePath, ArrayList<String> elements) {
+	public WriteOccurrences(String targetFilePath) {
 		this.targetFilePath = targetFilePath;
-		this.elements = elements;
 	}
 
-		/** Writes the String elements from the ArrayList given as the class parameter,
-		 * one line at a time in the specified file.
-		 * 
-		 * @throws IOException If an I/O error occurs.
-		 */
-	public void runWriteOccurrences() throws IOException {
-
-		try {
-			FileWriter writer = new FileWriter(targetFilePath);
+	/** 
+	 * 
+	 * @param elements the map containing the elements to be printed.
+	 * 
+	 * See {@link IsAWriteOccurrences public void runWriteOccurrences(Map<String, Integer> elements)}
+	 */
+	public void runWriteOccurrences(Map<String, Integer> elements)	{
+		
+		System.out.println("Writing file: " + targetFilePath + "...");
+		
+		try (FileWriter writer = new FileWriter(targetFilePath))	{
 			PrintWriter printWriter = new PrintWriter(writer);
 
-			for (String element : elements) {
-				printWriter.println(element);
+			for (Entry<String, Integer> entry : elements.entrySet()) {
+				
+				printWriter.println(entry.getKey() + ": " + entry.getValue());
 			}
 
-			printWriter.close();
 		}
 
 		catch (IOException e) {
-			System.out.println(e);
-			System.out.println("Analyze failed.");
-			System.exit(-1);
+			e.printStackTrace();
 		}
 	}
 }
