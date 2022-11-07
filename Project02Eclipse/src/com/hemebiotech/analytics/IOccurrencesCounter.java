@@ -1,6 +1,6 @@
 package com.hemebiotech.analytics;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -9,15 +9,15 @@ import java.util.Map;
  * @author lucmetz
  *
  */
-public interface IsACountOccurrences	{
-	
+public interface IOccurrencesCounter {
+
 	/**
 	 * Alphabetically sorts the elements of the HashMap given as the class parameter
 	 * after concatenating its keys and values as Strings and putting them in a new
 	 * ArrayList.
 	 * 
-	 * @param symptoms an HashMap of the elements that must be sorted
+	 * @param symptoms a list of the elements that must be sorted
 	 * @return sortedElements a TreeMap of the elements.
 	 */
-	public Map<String, Integer> runCountOccurrences(ArrayList<String> symptoms);
+	public Map<String, Integer> runCountOccurrences(List<String> symptoms);
 }

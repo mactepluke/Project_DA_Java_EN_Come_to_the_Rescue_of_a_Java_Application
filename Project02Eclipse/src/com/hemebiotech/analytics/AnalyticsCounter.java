@@ -1,35 +1,59 @@
 package com.hemebiotech.analytics;
 
-		/** 
-		 * 	This class uses the Analyze class to read a symptoms file,
-		 * 	sort it alphabetically and write the results in an output file
-		 * 	in the form of a non redundant symptoms list present in the source file,
-		 * 	with their occurrences.
-		 * 
-		 * @author lucmetz
-		 *
-		 */
+import java.util.List;
+import java.util.Map;
+
+/**
+ * This class is used to perform the analyze.
+ * 
+ * @author lucmetz
+ *
+ */
 public class AnalyticsCounter {
-	private static final String SOURCE_FILE_PATH = "symptoms.txt";
-	private static final String TARGET_FILE_PATH = "result.out";
+	private String sourceFilePath;
+	private String targetFilePath;
 
-		/** 
-		 * 
-		 * @param args no use is made of this class arguments in the current implementation
-		 * @throws Exception
-		 */
-	public static void main(String args[])	{
+	/**
+	 * @param sourceFilePath the path and name of the source file to analyze
+	 * @param targetFilePath the path and name of the target file in which the
+	 *                       analyze output is written
+	 */
+	public AnalyticsCounter(String sourceFilePath, String targetFilePath) {
+		this.sourceFilePath = sourceFilePath;
+		this.targetFilePath = targetFilePath;
+	}
 
-		Analyze newAnalyse = new Analyze(SOURCE_FILE_PATH, TARGET_FILE_PATH);
-		
-		try	{
-			newAnalyse.runAnalyze();
-			System.out.println("Analyze done.");
-		}
-	
-		catch	(Exception e)	{
-			e.printStackTrace();
-		}
-		
+	/**
+	 * Performs the analyze in 3 steps using 3 classes (ReadSymptoms,
+	 * SortOccurrences, Write Occurrences)
+	 * 
+	 * <ol>
+	 * <li>READS SYMPTOMS LISTS AND LISTS OCCURRENCES<br />
+	 * Uses ReadSymptoms class to generate a new HashMap with that lists pairs of
+	 * symptoms and their occurrences</li>
+	 * 
+	 * <li>SORTS SYMPTOMS ALPHABETICALLY<br />
+	 * Uses SortSymptoms class to sort the HashMap keys (symptoms) alphabetically
+	 * and returns an ArrayList in which each entry is a concatenated String of the
+	 * symptom and its occurrences in a more easy to write format</li>
+	 *
+	 * <li>WRITES SORTED SYMPTOMS LIST WITH OCCURRENCES IN OUTPUT FILE<br />
+	 * Uses WriteOccurrences class to write the above generated ArrayList into a
+	 * filed of the specified path and name</li>
+	 * </ol>
+	 * 
+	 */
+	public void runAnalyze() {
+		List<String> symptoms = null;
+		Map<String, Integer> sortedSymptoms = null;
+
+		ISymptomReader readSymptoms = new ReadSymptomDataFromFile();
+		symptoms = readSymptoms.getSymptoms(sourceFilePath);
+
+		IOccurrencesCounter countOccurrences = new CountOccurrences();
+		sortedSymptoms = countOccurrences.runCountOccurrences(symptoms);
+
+		ISymptomWriter writeOccurrences = new WriteSymptomDataToFile(targetFilePath);
+		writeOccurrences.runWriteOccurrences(sortedSymptoms);
 	}
 }

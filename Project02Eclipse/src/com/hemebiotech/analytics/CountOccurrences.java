@@ -1,6 +1,6 @@
 package com.hemebiotech.analytics;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -10,15 +10,13 @@ import java.util.TreeMap;
  * @author lucmetz
  *
  */
-public class CountOccurrences implements IsACountOccurrences	{
+public class CountOccurrences implements IOccurrencesCounter {
 
-	/** 
-	 * @param symptoms an HashMap of the elements that must be sorted
-	 * @return sortedElements a TreeMap of the elements.
+	/**
 	 * 
-	 * See {@link IsACountOccurrences public Map<String, Integer> runCountOccurrences(ArrayList<String> symptoms)}
+	 *         @See com.hemebiotech.analytics.IOccurrencesCounter#runCountOccurrences(List)
 	 */
-	public Map<String, Integer> runCountOccurrences(ArrayList<String> symptoms) {
+	public Map<String, Integer> runCountOccurrences(List<String> symptoms) {
 		Map<String, Integer> sortedElements = new TreeMap<String, Integer>();
 
 		System.out.println("Counting symptoms occurrences...");
@@ -27,8 +25,9 @@ public class CountOccurrences implements IsACountOccurrences	{
 
 			if (sortedElements.containsKey(symptom)) {
 				sortedElements.put(symptom, sortedElements.get(symptom) + 1);
-			} else
+			} else {
 				sortedElements.put(symptom, 1);
+			}
 		}
 
 		return sortedElements;
