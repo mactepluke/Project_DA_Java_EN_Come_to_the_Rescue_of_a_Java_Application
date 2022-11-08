@@ -29,17 +29,17 @@ public class AnalyticsCounter {
 	 * 
 	 * <ol>
 	 * <li>READS SYMPTOMS LISTS AND LISTS OCCURRENCES<br />
-	 * Uses ReadSymptoms class to generate a new HashMap with that lists pairs of
-	 * symptoms and their occurrences</li>
+	 * Uses ReadSymptomDataFromFile class to generate a new ArrayList with with
+	 * symptoms and their occurrences in a String format</li>
 	 * 
-	 * <li>SORTS SYMPTOMS ALPHABETICALLY<br />
-	 * Uses SortSymptoms class to sort the HashMap keys (symptoms) alphabetically
-	 * and returns an ArrayList in which each entry is a concatenated String of the
-	 * symptom and its occurrences in a more easy to write format</li>
+	 * <li>COUNTS SYMPTOMS ALPHABETICALLY<br />
+	 * Uses CountOccurrences class to sort the ArrayList alphabetically
+	 * by generating a TreeMap which keys and values correspond to
+	 * the symptoms names and occurrences, respectively</li>
 	 *
-	 * <li>WRITES SORTED SYMPTOMS LIST WITH OCCURRENCES IN OUTPUT FILE<br />
-	 * Uses WriteOccurrences class to write the above generated ArrayList into a
-	 * filed of the specified path and name</li>
+	 * <li>WRITES SORTED SYMPTOMS LIST WITH OCCURRENCES IN AN OUTPUT FILE<br />
+	 * Uses WriteSymptomDataToFile class to write the above generated map into a
+	 * file of the specified path and name</li>
 	 * </ol>
 	 * 
 	 */
@@ -53,7 +53,7 @@ public class AnalyticsCounter {
 		IOccurrencesCounter countOccurrences = new CountOccurrences();
 		sortedSymptoms = countOccurrences.runCountOccurrences(symptoms);
 
-		ISymptomWriter writeOccurrences = new WriteSymptomDataToFile(targetFilePath);
-		writeOccurrences.runWriteOccurrences(sortedSymptoms);
+		ISymptomWriter writeSymptomDataToFile = new WriteSymptomDataToFile(targetFilePath);
+		writeSymptomDataToFile.runWriteOccurrences(sortedSymptoms);
 	}
 }

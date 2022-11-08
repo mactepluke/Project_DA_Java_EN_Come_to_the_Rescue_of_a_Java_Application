@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * This class is used to alphabetically sort elements that are being analyzed.
+ * This class is used to alphabetically count and sort elements that are being analyzed.
  * 
  * @author lucmetz
  *

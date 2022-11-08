@@ -1,9 +1,9 @@
 package com.hemebiotech.analytics;
 
 /**
- * This class uses the Analyze class to read a symptoms file, sort it
- * alphabetically and write the results in an output file in the form of a non
- * redundant symptoms list present in the source file, with their occurrences.
+ * This class uses the AnalyticsCounter class to read a symptoms file, sort it
+ * alphabetically and write the results in an output file in the form of a non-redundant
+ * symptoms list present in the source file as well as their occurrences.
  * 
  * @author lucmetz
  *
@@ -16,7 +16,6 @@ public class Analyze {
 	 * 
 	 * @param args no use is made of this class arguments in the current
 	 *             implementation
-	 * @throws Exception
 	 */
 	public static void main(String args[]) {
 

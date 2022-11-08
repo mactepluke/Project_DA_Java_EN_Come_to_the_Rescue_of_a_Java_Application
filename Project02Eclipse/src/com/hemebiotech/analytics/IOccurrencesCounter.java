@@ -12,12 +12,11 @@ import java.util.Map;
 public interface IOccurrencesCounter {
 
 	/**
-	 * Alphabetically sorts the elements of the HashMap given as the class parameter
-	 * after concatenating its keys and values as Strings and putting them in a new
-	 * ArrayList.
+	 * Alphabetically sorts the elements of the list given as the class parameter
+	 * by generating a TreeMap with symptoms names as keys and their occurrences as values.
 	 * 
 	 * @param symptoms a list of the elements that must be sorted
-	 * @return sortedElements a TreeMap of the elements.
+	 * @return sortedElements a Map of the elements.
 	 */
 	public Map<String, Integer> runCountOccurrences(List<String> symptoms);
 }

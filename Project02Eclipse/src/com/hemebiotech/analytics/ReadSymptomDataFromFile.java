@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is used to read the source file and put its elements into a
- * HashMap.
+ * This class is used to read the source file and put its elements into an a list.
  * 
  * @author lucmetz
  *

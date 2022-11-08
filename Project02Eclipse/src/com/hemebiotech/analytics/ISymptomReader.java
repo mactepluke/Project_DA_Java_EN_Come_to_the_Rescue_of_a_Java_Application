@@ -11,8 +11,8 @@ import java.util.List;
 public interface ISymptomReader {
 
 	/**
-	 * Reads the file and returns a HashMap with its lines text content as keys and
-	 * the occurrences of redundant lines in the file as corresponding values.
+	 * Reads the file and returns a list with containing the content of each line of the file
+	 * in a separate entry of String type.
 	 * 
 	 * @param filePath the path and name of the source file to read
 	 * @return a list of the line elements and their occurrences in the file

@@ -11,10 +11,9 @@ import java.util.Map;
 public interface ISymptomWriter {
 
 	/**
-	 * Writes the String elements from the ArrayList given as the class parameter,
-	 * one line at a time in the specified file.
+	 * Writes the Map given as the class parameter in the specified file.
 	 * 
-	 * @param elements the map containing the elements to be printed.
+	 * @param elements the Map containing the elements to be printed
 	 * 
 	 */
 	public void runWriteOccurrences(Map<String, Integer> elements);
